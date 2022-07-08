@@ -46,7 +46,7 @@ class HomeFragment : Fragment() {
             "key" to "free"
             ,"appid" to "0"
             ,"msg" to "你好呀,我想和你做朋友，可以吗，哈哈")
-        val httpApi:HttpApi = OkhttpApi()
+        val httpApi:HttpApi = OkhttpApi.getInstance()
         httpApi.get(map,"api.php",object :IHttpCallback{
             override fun onSuccess(data: Any?) {
               Log.e("success result","${data.toString()}")
@@ -64,8 +64,10 @@ class HomeFragment : Fragment() {
 
     }
 
+
+
     fun sendPost(){
-       val httpApi:HttpApi = OkhttpApi()
+        val httpApi:HttpApi = OkhttpApi.getInstance()
         httpApi.post(LoginReq(),"",object :IHttpCallback{
             override fun onSuccess(data: Any?) {
                 Log.e("success result","${data.toString()}")
@@ -80,6 +82,8 @@ class HomeFragment : Fragment() {
             }
         })
     }
+
+
 
     data class LoginReq( val mobi:String = "18648957777",val password:String = "cn5123456")
 
